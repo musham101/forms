@@ -39,12 +39,21 @@ class SignInPage extends StatefulWidget {
 
 class _SignInPageState extends State<SignInPage> {
   final _formKey = GlobalKey<FormState>();
+  bool _passwordVisible = true;
+  void _passwordHandler(){
+    setState(() {
+      _passwordVisible = !_passwordVisible;
+    });
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Form(
       key: _formKey,
       child: Column(
         children: [
+          // Username or Email Feild
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: TextFormField(
@@ -78,17 +87,25 @@ class _SignInPageState extends State<SignInPage> {
               },
             ),
           ),
+          // Password Feild
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: TextFormField(
-              decoration: const InputDecoration(
-                focusedBorder: OutlineInputBorder(
+              obscureText: _passwordVisible,
+              decoration: InputDecoration(
+                suffixIcon: IconButton(
+                  onPressed: (){
+                    _passwordHandler();
+                  }, 
+                  icon: const Icon(Icons.visibility),
+                ),
+                focusedBorder: const OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.blueAccent, width: 2.0),
                 ),
-                enabledBorder: OutlineInputBorder(
+                enabledBorder: const OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.black87, width: 2.0),
                 ),
-                label: Text(
+                label: const Text(
                   'Enter your Password',
                   style: TextStyle(color: Colors.black87),
                 ),
@@ -111,6 +128,7 @@ class _SignInPageState extends State<SignInPage> {
               },
             ),
           ),
+          // Login Button
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: FlatButton(
