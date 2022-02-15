@@ -14,12 +14,25 @@ String tempPassword = '';
 
 class _SignUpPageState extends State<SignUpPage> {
   final _formKey = GlobalKey<FormState>();
+  bool _passwordVisible1 = true;
+  bool _passwordVisible2 = true;
+  void _passwordHandler1(){
+    setState(() {
+      _passwordVisible1 = !_passwordVisible1;
+    });
+  }
+  void _passwordHandler2(){
+    setState(() {
+      _passwordVisible2 = !_passwordVisible2;
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Form(
       key: _formKey,
       child: Column(
         children: [
+          // Name Feild
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: TextFormField(
@@ -48,6 +61,7 @@ class _SignUpPageState extends State<SignUpPage> {
               },
             ),
           ),
+          // Username Feild
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: TextFormField(
@@ -76,6 +90,7 @@ class _SignUpPageState extends State<SignUpPage> {
               },
             ),
           ),
+          // Email Feild
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: TextFormField(
@@ -104,17 +119,25 @@ class _SignUpPageState extends State<SignUpPage> {
               },
             ),
           ),
+          // Password Feild
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: TextFormField(
-              decoration: const InputDecoration(
-                focusedBorder: OutlineInputBorder(
+              obscureText: _passwordVisible1,
+              decoration: InputDecoration(
+                suffixIcon: IconButton(
+                  onPressed: (){
+                    _passwordHandler1();
+                  }, 
+                  icon: const Icon(Icons.visibility),
+                ),
+                focusedBorder: const OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.blueAccent, width: 2.0),
                 ),
-                enabledBorder: OutlineInputBorder(
+                enabledBorder: const OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.black87, width: 2.0),
                 ),
-                label: Text(
+                label: const Text(
                   'Enter your password',
                   style: TextStyle(color: Colors.black87),
                 ),
@@ -132,17 +155,25 @@ class _SignUpPageState extends State<SignUpPage> {
               },
             ),
           ),
+          // Password confirm Feild
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: TextFormField(
-              decoration: const InputDecoration(
-                focusedBorder: OutlineInputBorder(
+              obscureText: _passwordVisible2,
+              decoration: InputDecoration(
+                suffixIcon: IconButton(
+                  onPressed: (){
+                    _passwordHandler2();
+                  }, 
+                  icon: const Icon(Icons.visibility),
+                ),
+                focusedBorder: const OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.blueAccent, width: 2.0),
                 ),
-                enabledBorder: OutlineInputBorder(
+                enabledBorder: const OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.black87, width: 2.0),
                 ),
-                label: Text(
+                label: const Text(
                   'Enter your password',
                   style: TextStyle(color: Colors.black87),
                 ),
@@ -162,6 +193,7 @@ class _SignUpPageState extends State<SignUpPage> {
               },
             ),
           ),
+          // Submit Button
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: FlatButton(
