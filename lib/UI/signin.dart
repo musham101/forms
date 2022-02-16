@@ -40,6 +40,7 @@ class SignInPage extends StatefulWidget {
 class _SignInPageState extends State<SignInPage> {
   final _formKey = GlobalKey<FormState>();
   bool _passwordVisible = true;
+  // funtion to change the state of the password if the icon is clicked.
   void _passwordHandler(){
     setState(() {
       _passwordVisible = !_passwordVisible;
