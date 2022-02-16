@@ -16,6 +16,7 @@ class _SignUpPageState extends State<SignUpPage> {
   final _formKey = GlobalKey<FormState>();
   bool _passwordVisible1 = true;
   bool _passwordVisible2 = true;
+  // funtions to change the state of the password if the icon is clicked.
   void _passwordHandler1(){
     setState(() {
       _passwordVisible1 = !_passwordVisible1;
